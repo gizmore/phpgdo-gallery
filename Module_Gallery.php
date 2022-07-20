@@ -80,7 +80,7 @@ final class Module_Gallery extends GDO_Module
 	{
 	    if ($this->cfgHookLeftBar())
 	    {
-	        GDT_Page::$INSTANCE->leftNav->addField(
+	        GDT_Page::instance()->leftBar()->addField(
 	            GDT_Link::make('link_gallery')->href(href('Gallery', 'GalleryList')));
 	    }
 	    if ($this->cfgHookRightBar())

@@ -8,7 +8,7 @@ use GDO\Gallery\Module_Gallery;
 
 final class Crud extends MethodCrud
 {
-	public function isGuestAllowed() { return Module_Gallery::instance()->cfgGuestGalleries(); }
+	public function isGuestAllowed() : bool { return Module_Gallery::instance()->cfgGuestGalleries(); }
 	
 	public function hrefList()
 	{

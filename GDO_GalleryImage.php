@@ -41,19 +41,19 @@ final class GDO_GalleryImage extends GDO_FileTable
 	/**
 	 * @return GDO_File
 	 */
-	public function getFile() { return $this->getValue('files_file'); }
+	public function getFile() { return $this->gdoValue('files_file'); }
 	public function getFileID() { return $this->gdoVar('files_file'); }
 	
 	/**
 	 * @return GDO_Gallery
 	 */
-	public function getGallery() { return $this->getValue('files_object'); }
+	public function getGallery() { return $this->gdoValue('files_object'); }
 	public function getGalleryID() { return $this->gdoVar('files_object'); }
 	
 	/**
 	 * @return GDO_User
 	 */
-	public function getCreator() { return $this->getValue('files_creator'); }
+	public function getCreator() { return $this->gdoValue('files_creator'); }
 	public function getCreated() { return $this->gdoVar('files_created'); }
 	public function getDescription() { return $this->gdoVar('files_description'); }
 	public function hasDescription() { return !!$this->gdoVar('files_description'); }

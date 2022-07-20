@@ -52,7 +52,7 @@ final class GDO_Gallery extends GDO
 	/**
 	 * @return GDO_User
 	 */
-	public function getCreator() { return $this->getValue('gallery_creator'); }
+	public function getCreator() { return $this->gdoValue('gallery_creator'); }
 	public function getCreatorID() { return $this->gdoVar('gallery_creator'); }
 	public function getCreated() { return $this->gdoVar('gallery_created'); }
 	
@@ -77,7 +77,7 @@ final class GDO_Gallery extends GDO
 	
 	public function getFiles()
 	{
-		return $this->getValue('gallery_images');
+		return $this->gdoValue('gallery_images');
 	}
 	
 	public function getImageCount()
