@@ -5,7 +5,7 @@ use GDO\Core\GDO_Module;
 use GDO\UI\GDT_Link;
 use GDO\User\GDO_User;
 use GDO\Core\GDT_Checkbox;
-use GDO\Friends\GDT_ACL;
+use GDO\User\GDT_ACL;
 use GDO\Core\GDO;
 use GDO\UI\GDT_Page;
 

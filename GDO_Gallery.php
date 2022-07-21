@@ -9,7 +9,7 @@ use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Message;
 use GDO\User\GDO_User;
 use GDO\File\GDT_ImageFiles;
-use GDO\Friends\GDT_ACL;
+use GDO\User\GDT_ACL;
 use GDO\UI\GDT_Title;
 
 /**
@@ -63,7 +63,7 @@ final class GDO_Gallery extends GDO
 	
 	public function href_show() { return href('Gallery', 'Show', "&id={$this->getID()}"); }
 	
-	public function renderList() { return GDT_Template::php('Gallery', 'listitem/gallery.php', ['gallery'=>$this]); }
+	public function renderList() : string { return GDT_Template::php('Gallery', 'listitem/gallery.php', ['gallery'=>$this]); }
 	
 	/**
 	 * @return \GDO\Gallery\GDO_GalleryImage[]

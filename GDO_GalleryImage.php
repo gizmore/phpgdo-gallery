@@ -67,12 +67,12 @@ final class GDO_GalleryImage extends GDO_FileTable
 	public function href_show() { return href('Gallery', 'Image', "&id={$this->getFileID()}&variant=thumb"); }
 	public function href_full() { return href('Gallery', 'Image', "&id={$this->getFileID()}&nodisposition=1"); }
 	
-	public function renderCard()
+	public function renderCard() : string
 	{
 		return GDT_Template::php('Gallery', 'card/gallery_image.php', ['image' => $this]);
 	}
 	
-	public function renderList()
+	public function renderList() : string
 	{
 	    
 	}
