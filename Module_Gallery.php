@@ -50,11 +50,7 @@ final class Module_Gallery extends GDO_Module
 	###########
 	### ACL ###
 	###########
-	/**
-	 * @param GDO_User $user
-	 * @return GDT_ACL
-	 */
-	public function cfgUserACL(GDO_User $user)
+	public function cfgUserACLObject(GDO_User $user) : GDT_ACL
 	{
 		return Module_Gallery::instance()->userSetting($user, 'gallery_acl');
 	}

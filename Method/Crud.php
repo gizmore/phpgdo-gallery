@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Gallery\Method;
 
+use GDO\Core\GDO;
 use GDO\Form\MethodCrud;
 use GDO\Gallery\GDO_Gallery;
 use GDO\User\GDO_User;
@@ -15,7 +16,7 @@ final class Crud extends MethodCrud
 		return href('Gallery', 'GalleryList', '&user='.GDO_User::current()->getID());
 	}
 
-	public function gdoTable()
+	public function gdoTable() : GDO
 	{
 		return GDO_Gallery::table();
 	}

@@ -15,7 +15,7 @@ use GDO\User\GDO_User;
  */
 final class Image extends Method
 {
-    public function saveLastUrl() { return false; }
+    public function saveLastUrl() : bool { return false; }
     
     public function execute()
 	{
@@ -29,4 +29,16 @@ final class Image extends Method
 		}
 		return GetFile::make()->executeWithId($fileId, Common::getRequestString('variant'));
 	}
+	
+	public function getMethodTitle() : string
+	{
+		$fileId = Common::getRequestString('id');
+		$image = GDO_GalleryImage::findBy('files_file', $fileId);
+		if ($descr = $image->displayDescription())
+		{
+			return $descr;
+		}
+		return t('mt_gallery_image', [$image->getID()]);
+	}
+	
 }

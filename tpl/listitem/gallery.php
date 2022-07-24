@@ -1,7 +1,7 @@
 <?php
 use GDO\Gallery\GDO_Gallery;
 use GDO\UI\GDT_EditButton;
-use GDO\UI\GDT_ListItem;
+use GDO\Table\GDT_ListItem;
 use GDO\UI\GDT_Button;
 use GDO\User\GDO_User;
 use GDO\UI\GDT_Label;

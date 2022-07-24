@@ -17,7 +17,7 @@ use GDO\UI\GDT_Title;
  * 
  * @see GDT_ImageFiles
  * @author gizmore@wechall.net
- * @version 6.11.2
+ * @version 7.0.1
  * @since 6.2.0
  */
 final class GDO_Gallery extends GDO
@@ -31,7 +31,7 @@ final class GDO_Gallery extends GDO
 			GDT_Message::make('gallery_description')->label('description'),
 			GDT_CreatedBy::make('gallery_creator'),
 			GDT_CreatedAt::make('gallery_created'),
-			GDT_ACL::make('gallery_acl')->initial(Module_Gallery::instance()->cfgUserACL(GDO_User::current())->var),
+			GDT_ACL::make('gallery_acl'),
 			GDT_ImageFiles::make('gallery_files')->maxfiles(100)->
 				scaledVersion('thumb', 320, 240)->
 				fileTable(GDO_GalleryImage::table())->

@@ -4,6 +4,7 @@ namespace GDO\Gallery\Method;
 use GDO\Gallery\GDO_Gallery;
 use GDO\Table\MethodQueryList;
 use GDO\Util\Common;
+use GDO\Core\GDO;
 use GDO\Core\GDT_Response;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
@@ -21,7 +22,7 @@ final class GalleryList extends MethodQueryList
 	/**
 	 * @return GDO_Gallery
 	 */
-	public function gdoTable()
+	public function gdoTable() : GDO
 	{
 		return GDO_Gallery::table();
 	}
