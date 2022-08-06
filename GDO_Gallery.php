@@ -11,6 +11,7 @@ use GDO\User\GDO_User;
 use GDO\File\GDT_ImageFiles;
 use GDO\User\GDT_ACL;
 use GDO\UI\GDT_Title;
+use GDO\User\GDT_ACLRelation;
 
 /**
  * A gallery is a collection of images.
