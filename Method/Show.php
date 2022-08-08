@@ -8,7 +8,7 @@ use GDO\Core\GDT_Object;
 
 final class Show extends Method
 {
-	public function showInSitemap() : bool { return false; }
+	public function isShownInSitemap() : bool { return false; }
 	
 	public function getMethodTitle() : string
 	{

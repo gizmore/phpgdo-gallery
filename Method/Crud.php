@@ -11,7 +11,7 @@ final class Crud extends MethodCrud
 {
 	public function isGuestAllowed() : bool { return Module_Gallery::instance()->cfgGuestGalleries(); }
 	
-	public function hrefList()
+	public function hrefList() : string
 	{
 		return href('Gallery', 'GalleryList', '&user='.GDO_User::current()->getID());
 	}

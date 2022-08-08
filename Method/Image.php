@@ -15,7 +15,7 @@ use GDO\User\GDO_User;
  */
 final class Image extends Method
 {
-    public function saveLastUrl() : bool { return false; }
+    public function isSavingLastUrl() : bool { return false; }
     
     public function execute()
 	{
