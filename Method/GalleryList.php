@@ -6,6 +6,7 @@ use GDO\Table\MethodQueryList;
 use GDO\Util\Common;
 use GDO\Core\GDO;
 use GDO\Core\GDT_Response;
+use GDO\DB\Query;
 use GDO\User\GDT_User;
 use GDO\User\GDO_User;
 use GDO\UI\GDT_Button;
@@ -27,7 +28,7 @@ final class GalleryList extends MethodQueryList
 		return GDO_Gallery::table();
 	}
 
-	public function getQuery()
+	public function getQuery() : Query
 	{
 		$galleries = $this->gdoTable();
 		$query = $galleries->select();
