@@ -32,7 +32,7 @@ final class GDO_Gallery extends GDO
 			GDT_Message::make('gallery_description')->label('description'),
 			GDT_CreatedBy::make('gallery_creator'),
 			GDT_CreatedAt::make('gallery_created'),
-			GDT_ACLRelation::make('gallery_acl'),
+			GDT_ACLRelation::make('gallery_acl')->label('cfg_gallery_acl'),
 			GDT_ImageFiles::make('gallery_files')->maxfiles(100)->
 				scaledVersion('thumb', 320, 240)->
 				fileTable(GDO_GalleryImage::table())->
