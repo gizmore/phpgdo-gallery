@@ -47,7 +47,7 @@ final class GDO_GalleryImage extends GDO_FileTable
 	public function hasDescription() { return !!$this->gdoVar('files_description'); }
 	
 	public function displayDate() { return tt($this->getCreated()); }
-	public function displayDescription() { return $this->gdoColumn('files_description')->renderCell(); }
+	public function displayDescription() { return $this->gdoColumn('files_description')->renderHTML(); }
 	
 	##############
 	### Render ###

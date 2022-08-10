@@ -55,7 +55,7 @@ final class GDO_Gallery extends GDO
 	public function getTitle() { return $this->gdoVar('gallery_title'); }
 	public function getMessage() { return $this->gdoVar('gallery_description'); }
 	public function displayDate() { return tt($this->getCreated()); }
-	public function displayDescription() { return $this->gdoColumn('gallery_description')->renderCell(); }
+	public function displayDescription() { return $this->gdoColumn('gallery_description')->renderHTML(); }
 	
 	public function href_show() { return href('Gallery', 'Show', "&id={$this->getID()}"); }
 	

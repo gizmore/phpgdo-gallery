@@ -14,7 +14,7 @@ if ($gallery->canEdit($user))
 	$button = GDT_Button::make()->icon('edit')->label('btn_edit')->href(href('Gallery', 'Crud', "&id={$gallery->getID()}"));
 	$bar->addField($button);
 }
-echo $bar->renderCell();
+echo $bar->renderHTML();
 
 $images = GDO_GalleryImage::table();
 $query = $images->select('*')->where("files_object={$gallery->getID()}")->joinObject('files_file');
