@@ -6,6 +6,7 @@ use GDO\Gallery\GDO_GalleryImage;
 use GDO\Util\Common;
 use GDO\File\Method\GetFile;
 use GDO\User\GDO_User;
+use GDO\Core\GDT_String;
 
 /**
  * Download a gallery image.
@@ -17,9 +18,16 @@ final class Image extends Method
 {
     public function isSavingLastUrl() : bool { return false; }
     
+    public function gdoParameters() : array
+    {
+    	return [
+    		GDT_String::make('id')->notNull(),
+    	];
+    }
+    
     public function execute()
 	{
-		$fileId = Common::getRequestString('id');
+		$fileId = $this->gdoParameterVar('id');
 		$image = GDO_GalleryImage::findBy('files_file', $fileId);
 		$gallery = $image->getGallery();
 		$reason = '';
@@ -32,13 +40,18 @@ final class Image extends Method
 	
 	public function getMethodTitle() : string
 	{
-		$fileId = Common::getRequestString('id');
-		$image = GDO_GalleryImage::findBy('files_file', $fileId);
-		if ($descr = $image->displayDescription())
+		if ($fileId = $this->gdoParameterVar('id'))
 		{
-			return $descr;
+			if ($image = GDO_GalleryImage::getBy('files_file', $fileId))
+			{
+				if ($descr = $image->displayDescription())
+				{
+					return $descr;
+				}
+				return t('mt_gallery_image', [$image->getID()]);
+			}
 		}
-		return t('mt_gallery_image', [$image->getID()]);
+		return t('mt_gallery_image', ['0']);
 	}
 	
 }
