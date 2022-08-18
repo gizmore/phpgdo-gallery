@@ -21,10 +21,7 @@ final class Crud extends MethodCrud
 		return GDO_Gallery::table();
 	}
 
-	/**
-	 * @return GDO_Gallery
-	 */
-	public function getGallery()
+	public function getGallery() : GDO_Gallery
 	{
 		return $this->gdo;
 	}
