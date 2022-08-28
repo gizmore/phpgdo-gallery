@@ -8,6 +8,7 @@ use GDO\Core\GDT_Checkbox;
 use GDO\User\GDT_ACL;
 use GDO\Core\GDO;
 use GDO\UI\GDT_Page;
+use GDO\User\GDT_ACLRelation;
 
 /**
  * Image galleries.
@@ -43,7 +44,7 @@ final class Module_Gallery extends GDO_Module
 	public function getUserSettings()
 	{
 		return [
-			GDT_ACL::make('gallery_acl')->initial('acl_all')->label('cfg_gallery_acl'),
+			GDT_ACLRelation::make('gallery_acl')->initial('acl_all')->label('cfg_gallery_acl')->noacl(),
 		];
 	}
 	
