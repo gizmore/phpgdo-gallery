@@ -13,7 +13,8 @@ final class Crud extends MethodCrud
 	
 	public function hrefList() : string
 	{
-		return href('Gallery', 'GalleryList', '&user='.GDO_User::current()->getID());
+		$uid = GDO_User::current()->getID();
+		return href('Gallery', 'GalleryList', "&user={$uid}");
 	}
 
 	public function gdoTable() : GDO

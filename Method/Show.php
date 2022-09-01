@@ -3,7 +3,6 @@ namespace GDO\Gallery\Method;
 
 use GDO\Core\Method;
 use GDO\Gallery\GDO_Gallery;
-use GDO\Util\Common;
 use GDO\Core\GDT_Object;
 
 final class Show extends Method
@@ -30,8 +29,9 @@ final class Show extends Method
 	
 	public function execute()
 	{
-		$gallery = GDO_Gallery::findById(Common::getRequestString('id'));
-		return $this->templatePHP('gallery.php', ['gallery' => $gallery]);
+		return $this->templatePHP('gallery.php', [
+			'gallery' => $this->getGallery(),
+		]);
 	}
 	
 }
