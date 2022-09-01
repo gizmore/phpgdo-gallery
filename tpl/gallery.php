@@ -4,6 +4,7 @@ use GDO\Table\GDT_List;
 use GDO\UI\GDT_Bar;
 use GDO\UI\GDT_Button;
 use GDO\User\GDO_User;
+use GDO\Table\GDT_ListCard;
 
 /** @var $gallery \GDO\Gallery\GDO_Gallery **/
 $user = GDO_User::current();
@@ -18,12 +19,12 @@ echo $bar->renderHTML();
 
 $images = GDO_GalleryImage::table();
 $query = $images->select('*')->where("files_object={$gallery->getID()}")->joinObject('files_file');
-$list = GDT_List::make()->listMode(GDT_List::MODE_CARD);
-$list->setupHeaders(false, true);
+$list = GDT_ListCard::make();
+// $list->setupHeaders(false, true);
 $list->query($query);
 $list->countQuery($query->copy()->selectOnly('COUNT(*)'));
 $list->paginateDefault();
-$pagemenu = $list->getPageMenu();
-$pagemenu->filterQuery($query);
+$pagemenu = $list->pagemenu;
+$pagemenu->paginateQuery($query);
 
 echo $list->render();
