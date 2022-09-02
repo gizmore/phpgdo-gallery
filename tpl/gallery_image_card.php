@@ -24,12 +24,13 @@ $html = <<<EOF
 <img src="{$image->href_show()}" alt="Gallery Image" />
 </a>
 EOF;
-$card->addField(GDT_HTML::make()->html($html));
+$card->addField(GDT_HTML::make()->var($html));
 
 # Description footer
 if ($image->hasDescription())
 {
-    $card->subtext($image->gdoColumn('gallery_description'));
+	# This is the power of GDO. just re-use the GDO GDT.
+    $card->addField($image->gdoColumn('gallery_description'));
 }
 
 # Render

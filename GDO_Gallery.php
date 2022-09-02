@@ -9,7 +9,6 @@ use GDO\Core\GDT_Template;
 use GDO\UI\GDT_Message;
 use GDO\User\GDO_User;
 use GDO\File\GDT_ImageFiles;
-use GDO\User\GDT_ACL;
 use GDO\UI\GDT_Title;
 use GDO\User\GDT_ACLRelation;
 
@@ -24,6 +23,7 @@ use GDO\User\GDT_ACLRelation;
 final class GDO_Gallery extends GDO
 {
 	public function gdoCached() : bool { return false; }
+
 	public function gdoColumns() : array
 	{
 		return [
@@ -37,13 +37,11 @@ final class GDO_Gallery extends GDO
 				scaledVersion('thumb', 320, 240)->
 				fileTable(GDO_GalleryImage::table())->
 				previewHREF(href('Gallery', 'Image', '&variant=thumb&id={id}')),
+			# @TODO: You could put a virtual here for a subselect
 		];
 	}
 	
-	/**
-	 * @return GDT_ACL
-	 */
-	public function aclColumn() { return $this->gdoColumn('gallery_acl'); }
+	public function aclColumn() : GDT_ACLRelation { return $this->gdoColumn('gallery_acl'); }
 
 	public function canEdit(GDO_User $user) { return ($this->getCreatorID() === $user->getID()) || ($user->isStaff()); }
 	public function canView(GDO_User $user, &$reason) { return Module_Gallery::instance()->canSeeGallery($user, $this, $reason); }
