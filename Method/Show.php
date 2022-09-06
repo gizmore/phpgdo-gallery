@@ -29,7 +29,7 @@ final class Show extends Method
 	
 	public function execute()
 	{
-		return $this->templatePHP('gallery.php', [
+		return $this->templatePHP('gallery_page.php', [
 			'gallery' => $this->getGallery(),
 		]);
 	}

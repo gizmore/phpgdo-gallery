@@ -57,7 +57,7 @@ final class GDO_GalleryImage extends GDO_FileTable
 	
 	public function renderCard() : string
 	{
-		return GDT_Template::php('Gallery', 'card/gallery_image.php', ['image' => $this]);
+		return GDT_Template::php('Gallery', 'gallery_image_card.php', ['image' => $this]);
 	}
 	
 }

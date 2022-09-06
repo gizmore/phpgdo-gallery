@@ -30,7 +30,7 @@ $card->addField(GDT_HTML::make()->var($html));
 if ($image->hasDescription())
 {
 	# This is the power of GDO. just re-use the GDO GDT.
-    $card->addField($image->gdoColumn('gallery_description'));
+    $card->addField($image->gdoColumn('files_description'));
 }
 
 # Render
