@@ -51,7 +51,7 @@ final class Module_Gallery extends GDO_Module
 	###########
 	### ACL ###
 	###########
-	public function cfgUserACLObject(GDO_User $user) : GDT_ACL
+	public function cfgUserACLObject(GDO_User $user) : GDT_ACLRelation
 	{
 		return Module_Gallery::instance()->userSetting($user, 'gallery_acl');
 	}
