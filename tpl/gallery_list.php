@@ -12,10 +12,14 @@ $gallery instanceof GDO_Gallery;
 
 $li = GDT_ListItem::make()->gdo($gallery);
 
-$li->creatorHeader($gallery->gdoColumn('gallery_title'));
+$li->creatorHeader();
 
-$subtext = t('gallery_li2', [$gallery->getImageCount(), $gallery->getCreator()->renderUserName(), $gallery->displayDate()]);
-$li->subtext(GDT_Label::make()->labelRaw($subtext));
+$li->titleRaw($gallery->renderTitle());
+$li->subtitle('gallery_li2', [
+	$gallery->getImageCount(),
+	$gallery->getCreator()->renderUserName(),
+	$gallery->displayDate()]);
+$li->content($gallery->gdoColumn('gallery_description'));
 
 $actions = $li->actions();
 if ($gallery->canEdit(GDO_User::current()))

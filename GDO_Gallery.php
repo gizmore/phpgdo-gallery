@@ -53,11 +53,17 @@ final class GDO_Gallery extends GDO
 	public function getTitle() { return $this->gdoVar('gallery_title'); }
 	public function getMessage() { return $this->gdoVar('gallery_description'); }
 	public function displayDate() { return tt($this->getCreated()); }
-	public function displayDescription() { return $this->gdoColumn('gallery_description')->renderHTML(); }
+	public function displayDescription() { return $this->gdoColumn('gallery_description')->render(); }
+	
+	public function renderTitle() : string { return html($this->getTitle()); }
 	
 	public function href_show() { return href('Gallery', 'Show', "&id={$this->getID()}"); }
 	
-	public function renderList() : string { return GDT_Template::php('Gallery', 'listitem/gallery.php', ['gallery'=>$this]); }
+	public function renderList() : string
+	{
+		return GDT_Template::php('Gallery', 'gallery_list.php', [
+			'gallery'=>$this]);
+	}
 	
 	/**
 	 * @return GDO_GalleryImage[]
