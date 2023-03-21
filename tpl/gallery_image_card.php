@@ -1,11 +1,12 @@
 <?php
 # Imports
+use GDO\Gallery\GDO_GalleryImage;
 use GDO\UI\GDT_Card;
 use GDO\UI\GDT_HTML;
 use GDO\UI\GDT_Paragraph;
 
 # Variables
-/** @var $image \GDO\Gallery\GDO_GalleryImage **/
+/** @var $image GDO_GalleryImage * */
 $gallery = $image->getGallery();
 $user = $gallery->getCreator();
 
@@ -30,7 +31,7 @@ $card->addField(GDT_HTML::make()->var($html));
 if ($image->hasDescription())
 {
 	# This is the power of GDO. just re-use the GDO GDT.
-    $card->addField($image->gdoColumn('files_description'));
+	$card->addField($image->gdoColumn('files_description'));
 }
 
 # Render

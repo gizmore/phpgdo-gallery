@@ -1,5 +1,6 @@
 <?php
 namespace GDO\Gallery\lang;
+
 return [
 	'cfg_gallery_acl' => 'Gallery visibility',
 	'cfg_guest_galleries' => 'Allow guest galleries?',

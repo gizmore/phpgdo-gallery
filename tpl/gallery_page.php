@@ -1,12 +1,13 @@
 <?php
+
+use GDO\Gallery\GDO_Gallery;
 use GDO\Gallery\GDO_GalleryImage;
-use GDO\Table\GDT_List;
+use GDO\Table\GDT_ListCard;
 use GDO\UI\GDT_Bar;
 use GDO\UI\GDT_Button;
 use GDO\User\GDO_User;
-use GDO\Table\GDT_ListCard;
 
-/** @var $gallery \GDO\Gallery\GDO_Gallery **/
+/** @var $gallery GDO_Gallery * */
 $user = GDO_User::current();
 
 $bar = GDT_Bar::make();
