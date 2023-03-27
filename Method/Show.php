@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Gallery\Method;
 
+use GDO\Core\GDT;
 use GDO\Core\GDT_Object;
 use GDO\Core\Method;
 use GDO\Gallery\GDO_Gallery;
@@ -28,7 +29,7 @@ final class Show extends Method
 		];
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		return $this->templatePHP('gallery_page.php', [
 			'gallery' => $this->getGallery(),

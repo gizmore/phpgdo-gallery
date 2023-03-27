@@ -2,6 +2,7 @@
 namespace GDO\Gallery\Method;
 
 use GDO\Core\GDO;
+use GDO\Core\GDT;
 use GDO\Core\GDT_Response;
 use GDO\DB\Query;
 use GDO\Gallery\GDO_Gallery;
@@ -22,7 +23,7 @@ final class GalleryList extends MethodQueryList
 	}
 
 	/**
-	 * @return GDO_Gallery
+	 * @return GDO
 	 */
 	public function gdoTable(): GDO
 	{
@@ -46,7 +47,7 @@ final class GalleryList extends MethodQueryList
 		return $query;
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$response = GDT_Response::make();
 

@@ -1,6 +1,7 @@
 <?php
 namespace GDO\Gallery\Method;
 
+use GDO\Core\GDT;
 use GDO\Core\GDT_Object;
 use GDO\Core\Method;
 use GDO\File\Method\GetFile;
@@ -28,7 +29,7 @@ final class Image extends Method
 		];
 	}
 
-	public function execute()
+	public function execute(): GDT
 	{
 		$image = $this->getImage();
 		$gallery = $image->getGallery();

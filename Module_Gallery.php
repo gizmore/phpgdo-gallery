@@ -40,7 +40,7 @@ final class Module_Gallery extends GDO_Module
 		];
 	}
 
-	public function getUserSettings()
+	public function getUserSettings(): array
 	{
 		return [
 			GDT_ACLRelation::make('gallery_acl')->initial('acl_all')->label('cfg_gallery_acl')->noacl(),
