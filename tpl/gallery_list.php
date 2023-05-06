@@ -1,27 +1,22 @@
 <?php
-
+declare(strict_types=1);
+namespace GDO\Gallery\tpl;
 use GDO\Gallery\GDO_Gallery;
 use GDO\Table\GDT_ListItem;
 use GDO\UI\GDT_Button;
 use GDO\UI\GDT_EditButton;
 use GDO\User\GDO_User;
-
 /**
- * @var $gallery GDO_Gallery
+ * @var GDO_Gallery $gallery
  */
-$gallery instanceof GDO_Gallery;
-
 $li = GDT_ListItem::make()->gdo($gallery);
-
 $li->creatorHeader();
-
 $li->titleRaw($gallery->renderTitle());
 $li->subtitle('gallery_li2', [
 	$gallery->getImageCount(),
 	$gallery->getCreator()->renderUserName(),
 	$gallery->displayDate()]);
 $li->content($gallery->gdoColumn('gallery_description'));
-
 $actions = $li->actions();
 if ($gallery->canEdit(GDO_User::current()))
 {

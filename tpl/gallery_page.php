@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+namespace GDO\Gallery\tpl;
 
 use GDO\Gallery\GDO_Gallery;
 use GDO\Gallery\GDO_GalleryImage;
@@ -7,7 +9,7 @@ use GDO\UI\GDT_Bar;
 use GDO\UI\GDT_Button;
 use GDO\User\GDO_User;
 
-/** @var $gallery GDO_Gallery * */
+/** @var GDO_Gallery $gallery * */
 $user = GDO_User::current();
 
 $bar = GDT_Bar::make();
@@ -17,15 +19,13 @@ if ($gallery->canEdit($user))
 	$bar->addField($button);
 }
 echo $bar->renderHTML();
-
 $images = GDO_GalleryImage::table();
 $query = $images->select('*')->where("files_object={$gallery->getID()}")->joinObject('files_file');
-$list = GDT_ListCard::make();
+$list = GDT_ListCard::make()->gdo($gallery);
 // $list->setupHeaders(false, true);
 $list->query($query);
 $list->countQuery($query->copy()->selectOnly('COUNT(*)'));
 $list->paginateDefault();
 $pagemenu = $list->pagemenu;
 $pagemenu->paginateQuery($query);
-
 echo $list->render();

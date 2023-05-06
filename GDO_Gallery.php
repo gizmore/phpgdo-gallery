@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 namespace GDO\Gallery;
 
 use GDO\Core\GDO;
+use GDO\Core\GDT;
 use GDO\Core\GDT_AutoInc;
 use GDO\Core\GDT_CreatedAt;
 use GDO\Core\GDT_CreatedBy;
 use GDO\Core\GDT_Template;
+use GDO\DogShadowdogs\GDT_Action;
 use GDO\File\GDT_ImageFiles;
 use GDO\UI\GDT_Message;
 use GDO\UI\GDT_Title;
@@ -15,13 +18,14 @@ use GDO\User\GDT_ACLRelation;
 /**
  * A gallery is a collection of images with a title and description.
  *
- * @version 7.0.1
+ * @version 7.0.3
  * @since 6.2.0
  * @author gizmore@wechall.net
  * @see GDT_ImageFiles
  */
 final class GDO_Gallery extends GDO
 {
+
 
 	public function gdoCached(): bool { return false; }
 
@@ -50,36 +54,37 @@ final class GDO_Gallery extends GDO
 
 	public function aclColumn(): GDT_ACLRelation { return $this->gdoColumn('gallery_acl'); }
 
-	public function canEdit(GDO_User $user) { return ($this->getCreatorID() === $user->getID()) || ($user->isStaff()); }
+	public function canEdit(GDO_User $user): bool { return ($this->getCreatorID() === $user->getID()) || ($user->isStaff()); }
 
 	public function getCreatorID(): string { return $this->gdoVar('gallery_creator'); }
 
-	public function canView(GDO_User $user, &$reason) { return Module_Gallery::instance()->canSeeGallery($user, $this, $reason); }
+	public function canView(GDO_User $user, &$reason): bool { return Module_Gallery::instance()->canSeeGallery($user, $this, $reason); }
 
 	public function getCreator(): GDO_User { return $this->gdoValue('gallery_creator'); }
 
-	public function getMessage() { return $this->gdoVar('gallery_description'); }
+	public function getMessage(): ?string { return $this->gdoVar('gallery_description'); }
 
-	public function displayDate() { return tt($this->getCreated()); }
+	public function displayDate(): ?string { return tt($this->getCreated()); }
 
-	public function getCreated() { return $this->gdoVar('gallery_created'); }
+	public function getCreated(): string { return $this->gdoVar('gallery_created'); }
 
-	public function displayDescription() { return $this->gdoColumn('gallery_description')->render(); }
+	public function displayDescription(): string { return $this->gdoColumn('gallery_description')->render(); }
 
 	public function renderTitle(): string { return html($this->getTitle()); }
 
-	public function getTitle() { return $this->gdoVar('gallery_title'); }
+	public function getTitle(): ?string { return $this->gdoVar('gallery_title'); }
 
-	public function href_show() { return href('Gallery', 'Show', "&id={$this->getID()}"); }
+	public function href_show(): string { return href('Gallery', 'Show', "&id={$this->getID()}"); }
 
 	/**
 	 * @return GDO_GalleryImage[]
 	 */
 	public function getImages(): array
 	{
-		return GDO_GalleryImage::table()->select()->
-		where("files_object={$this->getID()}")->
-		exec()->fetchAllObjects();
+		$id = $this->getID();
+		return $id ? GDO_GalleryImage::table()->select()->
+		where("files_object={$id}")->
+		exec()->fetchAllObjects() : GDT::EMPTY_ARRAY;
 	}
 
 	public function getFiles(): array
@@ -94,7 +99,8 @@ final class GDO_Gallery extends GDO
 
 	public function queryImageCount(): int
 	{
-		return GDO_GalleryImage::table()->countWhere("files_object={$this->getID()}");
+		$id = $this->getID();
+		return $id ? GDO_GalleryImage::table()->countWhere("files_object={$this->getID()}") : 0;
 	}
 
 }
